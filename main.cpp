@@ -2,6 +2,7 @@
 
 #include <QApplication>
 
+// Main program
 int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
