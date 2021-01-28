@@ -1,6 +1,6 @@
 # QwtExample
 
-A simple example program using Qt/Qwt widgets to be used as a base for students doing Raspberry Pi data acquisition. It also creates a Thread which could be used to acquire ADC data with the help of poll/select and storing it in a ringbuffer.
+A simple example program using Qt/Qwt widgets.
 
 ![alt tag](screenshot.png)
 
@@ -19,12 +19,12 @@ To build:
 
 ```
     cd qwt-example
-    qmake
+    cmake .
     make
 ```
 
 To run:
 
 ```
-    ./QwtExample
+    ./qwt-example
 ```
