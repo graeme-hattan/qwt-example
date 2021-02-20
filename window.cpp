@@ -1,5 +1,4 @@
 #include "window.h"
-// #include "adcreader.h"
 
 #include <cmath>  // for sine stuff
 
@@ -49,22 +48,6 @@ Window::Window() : gain(5), count(0)
 	hLayout->addWidget(plot);
 
 	setLayout(hLayout);
-
-	// This is a demo for a thread which can be
-	// used to read from the ADC asynchronously.
-	// At the moment it doesn't do anything else than
-	// running in an endless loop and which prints out "tick"
-	// every second.
-//	adcreader = new ADCreader();
-//	adcreader->start();
-}
-
-Window::~Window() {
-	// tells the thread to no longer run its endless loop
-//	adcreader->quit();
-	// wait until the run method has terminated
-//	adcreader->wait();
-//	delete adcreader;
 }
 
 void Window::timerEvent( QTimerEvent * )

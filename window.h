@@ -8,8 +8,6 @@
 
 #include <QBoxLayout>
 
-// #include "adcreader.h"
-
 // class definition 'Window'
 class Window : public QWidget
 {
@@ -18,8 +16,6 @@ class Window : public QWidget
 
 public:
 	Window(); // default constructor - called when a Window is declared without arguments
-
-	~Window();
 
 	void timerEvent( QTimerEvent * );
 
@@ -45,8 +41,6 @@ private:
 
 	double gain;
 	int count;
-
-//	ADCreader *adcreader;
 };
 
 #endif // WINDOW_H
