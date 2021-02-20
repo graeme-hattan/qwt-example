@@ -4,7 +4,7 @@ A simple example program using Qt/Qwt widgets.
 
 ![alt tag](screenshot.png)
 
-## Making it work
+## Required packages
 
 Install the QT5 and Qwt development packages:
 
@@ -13,9 +13,7 @@ Install the QT5 and Qwt development packages:
     apt-get install libqwt-qt5-dev
 ```
 
-To clone this git repository.
-
-To build:
+## Build it
 
 ```
     cd qwt-example
@@ -23,7 +21,7 @@ To build:
     make
 ```
 
-To run:
+## Run it
 
 ```
     ./qwt-example
