@@ -5,14 +5,6 @@
 
 Window::Window() : gain(5), count(0)
 {
-	knob = new QwtKnob;
-	// set up the gain knob
-	knob->setValue(gain);
-
-	// use the Qt signals/slots framework to update the gain -
-	// every time the knob is moved, the setGain function will be called
-	connect( knob, SIGNAL(valueChanged(double)), SLOT(setGain(double)) );
-
 	// set up the thermometer
 	thermo = new QwtThermo; 
 	thermo->setFillBrush( QBrush(Qt::red) );
@@ -36,19 +28,31 @@ Window::Window() : gain(5), count(0)
 	plot->replot();
 	plot->show();
 
+	button = new QPushButton("Reset");
+	connect(button,&QPushButton::clicked,this,[this](){reset();});
 
 	// set up the layout - knob above thermometer
-	vLayout = new QVBoxLayout;
-	vLayout->addWidget(knob);
+	vLayout = new QVBoxLayout();
+	vLayout->addWidget(button);
 	vLayout->addWidget(thermo);
 
 	// plot to the left of knob and thermometer
-	hLayout = new QHBoxLayout;
+	hLayout = new QHBoxLayout();
 	hLayout->addLayout(vLayout);
 	hLayout->addWidget(plot);
 
 	setLayout(hLayout);
 }
+
+void Window::reset() {
+	// set up the initial plot data
+	for( int index=0; index<plotDataSize; ++index )
+	{
+		xData[index] = index;
+		yData[index] = 0;
+	}
+}
+
 
 void Window::timerEvent( QTimerEvent * )
 {
@@ -63,12 +67,4 @@ void Window::timerEvent( QTimerEvent * )
 
 	// set the thermometer value
 	thermo->setValue( inVal + 10 );
-}
-
-
-// this function can be used to change the gain of the A/D internal amplifier
-void Window::setGain(double gain)
-{
-	// for example purposes just change the amplitude of the generated input
-	this->gain = gain;
 }

@@ -7,6 +7,7 @@
 #include <qwt/qwt_plot_curve.h>
 
 #include <QBoxLayout>
+#include <QPushButton>
 
 // class definition 'Window'
 class Window : public QWidget
@@ -19,12 +20,9 @@ public:
 
 	void timerEvent( QTimerEvent * );
 
-public slots:
-	void setGain(double gain);
-
 // internal variables for the window class
 private:
-	QwtKnob      *knob;
+	QPushButton  *button;
 	QwtThermo    *thermo;
 	QwtPlot      *plot;
 	QwtPlotCurve *curve;
@@ -41,6 +39,8 @@ private:
 
 	double gain;
 	int count;
+
+	void reset();
 };
 
 #endif // WINDOW_H
