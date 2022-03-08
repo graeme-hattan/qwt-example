@@ -3,12 +3,12 @@
 #include <cmath>  // for sine stuff
 
 
-Window::Window() : gain(5), count(0)
+Window::Window() : gain(7.5), count(0)
 {
 	// set up the thermometer
 	thermo = new QwtThermo; 
 	thermo->setFillBrush( QBrush(Qt::red) );
-	//thermo->setRange(0, 20);
+	thermo->setScale(0, 10);
 	thermo->show();
 
 
@@ -66,5 +66,5 @@ void Window::timerEvent( QTimerEvent * )
 	plot->replot();
 
 	// set the thermometer value
-	thermo->setValue( inVal + 10 );
+	thermo->setValue( fabs(inVal) );
 }
