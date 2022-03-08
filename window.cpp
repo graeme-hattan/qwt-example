@@ -3,7 +3,7 @@
 #include <cmath>  // for sine stuff
 
 
-Window::Window() : gain(7.5), count(0)
+Window::Window()
 {
 	// set up the thermometer
 	thermo = new QwtThermo; 
@@ -31,12 +31,12 @@ Window::Window() : gain(7.5), count(0)
 	button = new QPushButton("Reset");
 	connect(button,&QPushButton::clicked,this,[this](){reset();});
 
-	// set up the layout - knob above thermometer
+	// set up the layout - button above thermometer
 	vLayout = new QVBoxLayout();
 	vLayout->addWidget(button);
 	vLayout->addWidget(thermo);
 
-	// plot to the left of knob and thermometer
+	// plot to the left of button and thermometer
 	hLayout = new QHBoxLayout();
 	hLayout->addLayout(vLayout);
 	hLayout->addWidget(plot);

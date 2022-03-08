@@ -2,7 +2,6 @@
 #define WINDOW_H
 
 #include <qwt/qwt_thermo.h>
-#include <qwt/qwt_knob.h>
 #include <qwt/qwt_plot.h>
 #include <qwt/qwt_plot_curve.h>
 
@@ -22,6 +21,9 @@ public:
 
 // internal variables for the window class
 private:
+	static constexpr int plotDataSize = 100;
+	static constexpr double gain = 7.5;
+
 	QPushButton  *button;
 	QwtThermo    *thermo;
 	QwtPlot      *plot;
@@ -31,14 +33,11 @@ private:
 	QVBoxLayout  *vLayout;  // vertical layout
 	QHBoxLayout  *hLayout;  // horizontal layout
 
-	static const int plotDataSize = 100;
-
 	// data arrays for the plot
 	double xData[plotDataSize];
 	double yData[plotDataSize];
 
-	double gain;
-	int count;
+	long count = 0;
 
 	void reset();
 };
