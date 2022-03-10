@@ -1,6 +1,6 @@
 # QwtExample
 
-A simple example program using Qt/Qwt widgets.
+A simple example program using QT and Qwt widgets.
 
 ![alt tag](screenshot.png)
 
@@ -16,7 +16,6 @@ Install the QT5 and Qwt development packages:
 ## Build it
 
 ```
-    cd qwt-example
     cmake .
     make
 ```
