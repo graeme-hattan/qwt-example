@@ -16,7 +16,7 @@ Window::Window()
 	for( int index=0; index<plotDataSize; ++index )
 	{
 		xData[index] = index;
-		yData[index] = gain * sin( M_PI * index/50 );
+		yData[index] = 0;
 	}
 
 	curve = new QwtPlotCurve;
@@ -61,8 +61,8 @@ void Window::timerEvent( QTimerEvent * )
 	++count;
 
 	// add the new input to the plot
-	memmove( yData, yData+1, (plotDataSize-1) * sizeof(double) );
-	yData[plotDataSize-1] = inVal;
+	std::move( yData, yData + plotDataSize - 1, yData+1 );
+	yData[0] = inVal;
 	curve->setSamples(xData, yData, plotDataSize);
 	plot->replot();
 
