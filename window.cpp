@@ -65,15 +65,19 @@ void Window::reset() {
 
 
 void Window::hasData(double inVal) {
+    mtx.lock();
     // add the new input to the plot
     std::move( yData, yData + plotDataSize - 1, yData+1 );
     yData[0] = inVal;
-    curve->setSamples(xData, yData, plotDataSize);
-    thermo->setValue( fabs(inVal) );
+    mtx.unlock();
 }
 
 void Window::timerEvent( QTimerEvent * )
 {
+    mtx.lock();
+    curve->setSamples(xData, yData, plotDataSize);
+    thermo->setValue( fabs(yData[0]) );
     plot->replot();
     update();
+    mtx.unlock();
 }

@@ -8,6 +8,8 @@
 #include <QBoxLayout>
 #include <QPushButton>
 
+#include <mutex>
+
 #include "CppTimer.h"
 
 // class definition 'Window'
@@ -61,6 +63,8 @@ private:
 
     void reset();
     void hasData(double v);
+
+    std::mutex mtx; 
 };
 
 #endif // WINDOW_H
