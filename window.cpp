@@ -50,6 +50,10 @@ Window::Window()
     fakeSensor.startms(5);
 }
 
+Window::~Window() {
+    fakeSensor.stop();
+}
+
 void Window::reset() {
     // set up the initial plot data
     for( int index=0; index<plotDataSize; ++index )
