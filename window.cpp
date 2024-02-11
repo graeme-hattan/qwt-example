@@ -67,20 +67,21 @@ void Window::reset() {
 }
 
 
+// add the new input to the plot
 void Window::hasData(double inVal) {
     mtx.lock();
-    // add the new input to the plot
     std::move( yData, yData + plotDataSize - 1, yData+1 );
     yData[0] = inVal;
     mtx.unlock();
 }
 
+// screen refresh
 void Window::timerEvent( QTimerEvent * )
 {
     mtx.lock();
     curve->setSamples(xData, yData, plotDataSize);
     thermo->setValue( fabs(yData[0]) );
+    mtx.unlock();
     plot->replot();
     update();
-    mtx.unlock();
 }
