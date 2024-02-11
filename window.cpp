@@ -47,7 +47,10 @@ Window::Window()
 
     setLayout(hLayout);
 
-    fakeSensor.startms(5);
+    // a fake data sample every 10ms
+    fakeSensor.startms(10);
+    // Screen refresh every 40ms
+    startTimer(40);
 }
 
 Window::~Window() {
