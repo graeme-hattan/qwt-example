@@ -1,17 +1,15 @@
-#include <window.h>
+#include "window.h"
 
 #include <QApplication>
 
+// Main program
 int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
 
 	// create the window
 	Window window;
-	window.showMaximized();
-
-	// call the window.timerEvent function every 40 ms
-	window.startTimer(40);
+	window.show();
 
 	// execute the application
 	return app.exec();
